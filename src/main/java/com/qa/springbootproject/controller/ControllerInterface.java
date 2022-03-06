@@ -1,10 +1,10 @@
-package com.qa.springbootproject.service;
+package com.qa.springbootproject.controller;
 
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
-public interface ServiceCRUD<T> {
+public interface ControllerInterface<T> {
 
 	ResponseEntity<T> create(T body);
 

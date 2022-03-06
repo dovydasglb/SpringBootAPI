@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.springbootproject.domain.Customer;
 import com.qa.springbootproject.service.CustomerService;
-import com.qa.springbootproject.service.ServiceCRUD;
 
 @RestController
-public class CustomerController implements ServiceCRUD<Customer> {
+public class CustomerController implements ControllerInterface<Customer>{
 
 	private CustomerService service;
 
@@ -57,5 +56,6 @@ public class CustomerController implements ServiceCRUD<Customer> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }
