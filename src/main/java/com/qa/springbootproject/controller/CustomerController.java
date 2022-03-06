@@ -28,31 +28,31 @@ public class CustomerController implements ControllerInterface<Customer>{
 	}
 
 	@PostMapping("/create")
-	public ResponseEntity<Customer> create(@RequestBody Customer body) {
+	public ResponseEntity<Customer> createRequest(@RequestBody Customer body) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@GetMapping("/readAll")
-	public ResponseEntity<List<Customer>> readAll() {
+	public ResponseEntity<List<Customer>> readAllRequest() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@GetMapping("/read/{id}")
-	public ResponseEntity<Customer> readById(@PathVariable long id) {
+	public ResponseEntity<Customer> readByIdRequest(@PathVariable long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Customer> updateById(@PathVariable long id, @RequestBody Customer body) {
+	public ResponseEntity<Customer> updateByIdRequest(@PathVariable long id, @RequestBody Customer body) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Object> deleteById(@PathVariable long id) {
+	public ResponseEntity<Object> deleteByIdRequest(@PathVariable long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

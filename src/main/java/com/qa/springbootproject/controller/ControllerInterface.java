@@ -6,14 +6,14 @@ import org.springframework.http.ResponseEntity;
 
 public interface ControllerInterface<T> {
 
-	ResponseEntity<T> create(T body);
+	ResponseEntity<T> createRequest(T body);
 
-	ResponseEntity<List<T>> readAll();
+	ResponseEntity<List<T>> readAllRequest();
 
-	ResponseEntity<T> readById(long id);
+	ResponseEntity<T> readByIdRequest(long id);
 
-	ResponseEntity<T> updateById(long id, T body);
+	ResponseEntity<T> updateByIdRequest(long id, T body);
 
-	ResponseEntity<Object> deleteById(long id);
+	ResponseEntity<Object> deleteByIdRequest(long id);
 
 }
