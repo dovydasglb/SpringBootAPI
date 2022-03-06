@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ import com.qa.springbootproject.service.CustomerService;
 import com.qa.springbootproject.service.ServiceCRUD;
 
 @RestController
-public class CustomerController implements ServiceCRUD<Customer>{
+public class CustomerController implements ServiceCRUD<Customer> {
 
 	private CustomerService service;
 
@@ -27,58 +28,34 @@ public class CustomerController implements ServiceCRUD<Customer>{
 		this.service = service;
 	}
 
-	@Override
-	public ResponseEntity<Customer> create(Customer body) {
+	@PostMapping("/create")
+	public ResponseEntity<Customer> create(@RequestBody Customer body) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	@GetMapping("/readAll")
 	public ResponseEntity<List<Customer>> readAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public ResponseEntity<Customer> readById(long id) {
+	@GetMapping("/read/{id}")
+	public ResponseEntity<Customer> readById(@PathVariable long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public ResponseEntity<Customer> updateById(long id, Customer body) {
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Customer> updateById(@PathVariable long id, @RequestBody Customer body) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public ResponseEntity<Object> deleteById(long id) {
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Object> deleteById(@PathVariable long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-//	// CRUD
-//	
-//	// Create
-//	@PostMapping("/create")
-//	public ResponseEntity<Customer> createRequest(@RequestBody Customer customer) {
-//		return null;
-//	}
-//	
-//	// Read
-//	@GetMapping("/readAll")
-//	public ResponseEntity<List<Customer>> readAllRequest() {
-//		return null;
-//	}
-//	
-//	@GetMapping("/read/{id}")
-//	public ResponseEntity<Customer> readByIdRequest(@PathVariable long id) {
-//		return null;
-//	}
-//	
-//	// Update
-//	@PutMapping("/update")
-//	public ResponseEntity<Customer> updateByIdRequest() {
-//		
-//	}
+
 }
