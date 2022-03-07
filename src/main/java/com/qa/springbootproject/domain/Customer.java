@@ -15,7 +15,7 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 
 	@Column(nullable = false)
 	@Size(min = 2, max = 30)
@@ -25,7 +25,7 @@ public class Customer {
 	@Size(min = 2, max = 30)
 	private String lastName;
 
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	@Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")
 	private String emailAddress;
 
@@ -45,7 +45,7 @@ public class Customer {
 		this.postCode = postCode;
 	}
 
-	public Customer(Long id, String firstName, String lastName, String emailAddress, String postCode) {
+	public Customer(long id, String firstName, String lastName, String emailAddress, String postCode) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
