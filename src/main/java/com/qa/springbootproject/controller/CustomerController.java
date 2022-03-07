@@ -3,6 +3,7 @@ package com.qa.springbootproject.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ import com.qa.springbootproject.domain.Customer;
 import com.qa.springbootproject.service.CustomerService;
 
 @RestController
-public class CustomerController implements ControllerInterface<Customer>{
+public class CustomerController implements ControllerInterface<Customer> {
 
 	private CustomerService service;
 
@@ -29,33 +30,27 @@ public class CustomerController implements ControllerInterface<Customer>{
 
 	@PostMapping("/create")
 	public ResponseEntity<Customer> createRequest(@RequestBody Customer body) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResponseEntity<Customer>(this.service.create(body), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/readAll")
 	public ResponseEntity<List<Customer>> readAllRequest() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResponseEntity<List<Customer>>(this.service.readAll(), HttpStatus.OK);
 	}
 
 	@GetMapping("/read/{id}")
 	public ResponseEntity<Customer> readByIdRequest(@PathVariable Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResponseEntity<Customer>(this.service.readById(id), HttpStatus.OK);
 	}
 
 	@PutMapping("/update/{id}")
 	public ResponseEntity<Customer> updateByIdRequest(@PathVariable Long id, @RequestBody Customer body) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResponseEntity<Customer>(this.service.updateById(id, body), HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Object> deleteByIdRequest(@PathVariable Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResponseEntity<Object>(this.service.deleteById(id) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
 	}
-
 
 }
