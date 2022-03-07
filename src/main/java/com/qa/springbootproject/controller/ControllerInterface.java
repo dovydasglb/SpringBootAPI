@@ -10,10 +10,10 @@ public interface ControllerInterface<T> {
 
 	ResponseEntity<List<T>> readAllRequest();
 
-	ResponseEntity<T> readByIdRequest(long id);
+	ResponseEntity<T> readByIdRequest(Long id);
 
-	ResponseEntity<T> updateByIdRequest(long id, T body);
+	ResponseEntity<T> updateByIdRequest(Long id, T body);
 
-	ResponseEntity<Object> deleteByIdRequest(long id);
+	ResponseEntity<Object> deleteByIdRequest(Long id);
 
 }

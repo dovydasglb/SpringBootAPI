@@ -15,7 +15,7 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@Column(nullable = false)
 	@Size(min = 2, max = 30)
@@ -45,7 +45,7 @@ public class Customer {
 		this.postCode = postCode;
 	}
 
-	public Customer(long id, String firstName, String lastName, String emailAddress, String postCode) {
+	public Customer(Long id, String firstName, String lastName, String emailAddress, String postCode) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -58,7 +58,7 @@ public class Customer {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

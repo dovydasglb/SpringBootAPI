@@ -28,17 +28,17 @@ public class CustomerService implements ServiceInterface<Customer>{
 		return null;
 	}
 
-	public Customer readById(long id) {
+	public Customer readById(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Customer updateById(long id, Customer body) {
+	public Customer updateById(Long id, Customer body) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public boolean deleteById(long id) {
+	public boolean deleteById(Long id) {
 		// TODO Auto-generated method stub
 		return false;
 	}

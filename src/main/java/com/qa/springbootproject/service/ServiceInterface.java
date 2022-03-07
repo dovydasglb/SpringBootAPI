@@ -8,10 +8,10 @@ public interface ServiceInterface<T> {
 
 	List<T> readAll();
 
-	T readById(long id);
+	T readById(Long id);
 
-	T updateById(long id, T body);
+	T updateById(Long id, T body);
 
-	boolean deleteById(long id);
+	boolean deleteById(Long id);
 
 }

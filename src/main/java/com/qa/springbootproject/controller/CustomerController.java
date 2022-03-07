@@ -40,19 +40,19 @@ public class CustomerController implements ControllerInterface<Customer>{
 	}
 
 	@GetMapping("/read/{id}")
-	public ResponseEntity<Customer> readByIdRequest(@PathVariable long id) {
+	public ResponseEntity<Customer> readByIdRequest(@PathVariable Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Customer> updateByIdRequest(@PathVariable long id, @RequestBody Customer body) {
+	public ResponseEntity<Customer> updateByIdRequest(@PathVariable Long id, @RequestBody Customer body) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Object> deleteByIdRequest(@PathVariable long id) {
+	public ResponseEntity<Object> deleteByIdRequest(@PathVariable Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
