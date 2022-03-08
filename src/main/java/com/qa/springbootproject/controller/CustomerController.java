@@ -11,13 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.springbootproject.domain.Customer;
 import com.qa.springbootproject.dto.CustomerDTO;
 import com.qa.springbootproject.service.CustomerService;
 
-@RestController("/customer")
+@RestController
+@RequestMapping("/customer")
 public class CustomerController implements ControllerInterface<CustomerDTO, Customer> {
 
 	private CustomerService service;
@@ -52,7 +54,8 @@ public class CustomerController implements ControllerInterface<CustomerDTO, Cust
 
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Object> deleteByIdRequest(@PathVariable Long id) {
-		return new ResponseEntity<Object>(this.service.deleteById(id) ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
+		this.service.deleteById(id);
+		return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
 	}
 
 }

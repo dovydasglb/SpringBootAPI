@@ -12,6 +12,6 @@ public interface ServiceInterface<DTO, T> {
 
 	DTO updateById(Long id, T body);
 
-	boolean deleteById(Long id);
+	void deleteById(Long id);
 
 }
