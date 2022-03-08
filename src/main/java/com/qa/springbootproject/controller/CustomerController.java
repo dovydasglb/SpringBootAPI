@@ -17,7 +17,7 @@ import com.qa.springbootproject.domain.Customer;
 import com.qa.springbootproject.dto.CustomerDTO;
 import com.qa.springbootproject.service.CustomerService;
 
-@RestController
+@RestController("/customer")
 public class CustomerController implements ControllerInterface<CustomerDTO, Customer> {
 
 	private CustomerService service;
@@ -52,7 +52,7 @@ public class CustomerController implements ControllerInterface<CustomerDTO, Cust
 
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Object> deleteByIdRequest(@PathVariable Long id) {
-		return new ResponseEntity<Object>(this.service.deleteById(id) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Object>(this.service.deleteById(id) ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
 	}
 
 }
