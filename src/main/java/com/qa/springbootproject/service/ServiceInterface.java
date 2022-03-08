@@ -2,15 +2,15 @@ package com.qa.springbootproject.service;
 
 import java.util.List;
 
-public interface ServiceInterface<T> {
+public interface ServiceInterface<DTO, T> {
 
-	T create(T body);
+	DTO create(T body);
 
-	List<T> readAll();
+	List<DTO> readAll();
 
-	T readById(Long id);
+	DTO readById(Long id);
 
-	T updateById(Long id, T body);
+	DTO updateById(Long id, T body);
 
 	boolean deleteById(Long id);
 

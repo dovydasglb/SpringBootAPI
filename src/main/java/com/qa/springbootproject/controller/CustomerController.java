@@ -14,38 +14,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.springbootproject.domain.Customer;
+import com.qa.springbootproject.dto.CustomerDTO;
 import com.qa.springbootproject.service.CustomerService;
 
 @RestController
-public class CustomerController implements ControllerInterface<Customer> {
+public class CustomerController implements ControllerInterface<CustomerDTO, Customer> {
 
 	private CustomerService service;
 
-	// Dependency injection
+	// Service layer dependency injection
 	@Autowired
 	public CustomerController(CustomerService service) {
 		super();
 		this.service = service;
 	}
 
+	// CRUD functionality mapping
 	@PostMapping("/create")
-	public ResponseEntity<Customer> createRequest(@RequestBody Customer body) {
-		return new ResponseEntity<Customer>(this.service.create(body), HttpStatus.CREATED);
+	public ResponseEntity<CustomerDTO> createRequest(@RequestBody Customer body) {
+		return new ResponseEntity<CustomerDTO>(this.service.create(body), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/readAll")
-	public ResponseEntity<List<Customer>> readAllRequest() {
-		return new ResponseEntity<List<Customer>>(this.service.readAll(), HttpStatus.OK);
+	public ResponseEntity<List<CustomerDTO>> readAllRequest() {
+		return new ResponseEntity<List<CustomerDTO>>(this.service.readAll(), HttpStatus.OK);
 	}
 
 	@GetMapping("/read/{id}")
-	public ResponseEntity<Customer> readByIdRequest(@PathVariable Long id) {
-		return new ResponseEntity<Customer>(this.service.readById(id), HttpStatus.OK);
+	public ResponseEntity<CustomerDTO> readByIdRequest(@PathVariable Long id) {
+		return new ResponseEntity<CustomerDTO>(this.service.readById(id), HttpStatus.OK);
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Customer> updateByIdRequest(@PathVariable Long id, @RequestBody Customer body) {
-		return new ResponseEntity<Customer>(this.service.updateById(id, body), HttpStatus.ACCEPTED);
+	public ResponseEntity<CustomerDTO> updateByIdRequest(@PathVariable Long id, @RequestBody Customer body) {
+		return new ResponseEntity<CustomerDTO>(this.service.updateById(id, body), HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping("/delete/{id}")

@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
-public interface ControllerInterface<T> {
+public interface ControllerInterface<DTO, T> {
 
-	ResponseEntity<T> createRequest(T body);
+	ResponseEntity<DTO> createRequest(T body);
 
-	ResponseEntity<List<T>> readAllRequest();
+	ResponseEntity<List<DTO>> readAllRequest();
 
-	ResponseEntity<T> readByIdRequest(Long id);
+	ResponseEntity<DTO> readByIdRequest(Long id);
 
-	ResponseEntity<T> updateByIdRequest(Long id, T body);
+	ResponseEntity<DTO> updateByIdRequest(Long id, T body);
 
 	ResponseEntity<Object> deleteByIdRequest(Long id);
 
