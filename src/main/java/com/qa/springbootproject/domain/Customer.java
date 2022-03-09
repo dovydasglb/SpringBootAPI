@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -19,20 +21,33 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(nullable = false)
-	@Size(min = 2, max = 30)
+	
+	@Column(name = "first_name")
+	@NotBlank(message = "First name must not be blank")
+	@Size(min = 2, message = "First name must be at least 2 characters long")
+	@Size(max = 30, message = "First name length exceeds limits")
 	private String firstName;
 
-	@Column(nullable = false)
-	@Size(min = 2, max = 30)
+	
+	@Column(name = "last_name")
+	@NotBlank(message = "Last name must not be blank")
+	@Size(min = 2, message = "First name must be at least 2 characters long")
+	@Size(max = 30, message = "First name length exceeds limits")
 	private String lastName;
 
-	@Column(nullable = false)
-	@Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")
+	
+	@Column(name = "email_address")
+	@NotBlank(message = "Email address must not be blank")
+	@Size(min = 6, message = "Email address must be at least 6 characters long")
+	@Size(max = 254, message = "Email length exceeds limits")
+	@Email(message = "Invalid email address")
 	private String emailAddress;
 
-	@Column(nullable = false)
-	@Pattern(regexp = "^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$")
+	@Column(name = "post_code")
+	@NotBlank(message = "Post code must not be blank")
+	@Size(min = 6, message = "Invalid postcode")
+	@Size(max = 8, message = "Invalid postcode")
+	@Pattern(regexp = "^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$", message = "Invalid post code")
 	private String postCode;
 
 	public Customer() {

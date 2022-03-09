@@ -2,6 +2,8 @@ package com.qa.springbootproject.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +35,7 @@ public class CustomerController implements ControllerInterface<CustomerDTO, Cust
 
 	// CRUD functionality mapping
 	@PostMapping("/create")
-	public ResponseEntity<CustomerDTO> createRequest(@RequestBody Customer body) {
+	public ResponseEntity<CustomerDTO> createRequest(@Valid @RequestBody Customer body) {
 		return new ResponseEntity<CustomerDTO>(this.service.create(body), HttpStatus.CREATED);
 	}
 
@@ -48,7 +50,7 @@ public class CustomerController implements ControllerInterface<CustomerDTO, Cust
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<CustomerDTO> updateByIdRequest(@PathVariable Long id, @RequestBody Customer body) {
+	public ResponseEntity<CustomerDTO> updateByIdRequest(@PathVariable Long id, @Valid @RequestBody Customer body) {
 		return new ResponseEntity<CustomerDTO>(this.service.updateById(id, body), HttpStatus.ACCEPTED);
 	}
 
