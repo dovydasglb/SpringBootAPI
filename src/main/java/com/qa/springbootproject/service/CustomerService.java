@@ -71,4 +71,20 @@ public class CustomerService implements ServiceInterface<CustomerDTO, Customer> 
 		}
 	}
 
+	// Custom query methods
+	public List<CustomerDTO> readAllByFirstName(String firstName) {
+		List<Customer> existingRecordList = this.repo.readAllByFirstName(firstName);
+		if (existingRecordList.isEmpty()) {
+			throw new ResourceNotFoundException("Customer record with first name: " + firstName + " does not exist");
+		}
+		return this.repo.readAllByFirstName(firstName).stream().map(this::mapToDTO).collect(Collectors.toList());
+	}
+	
+	public List<CustomerDTO> readAllByLastName(String lastName) {
+		List<Customer> existingRecordList = this.repo.readAllByLastName(lastName);
+		if (existingRecordList.isEmpty()) {
+			throw new ResourceNotFoundException("Customer record with last name: " + lastName + " does not exist");
+		}
+		return this.repo.readAllByLastName(lastName).stream().map(this::mapToDTO).collect(Collectors.toList());
+	}
 }

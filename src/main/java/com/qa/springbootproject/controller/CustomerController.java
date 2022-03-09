@@ -33,7 +33,7 @@ public class CustomerController implements ControllerInterface<CustomerDTO, Cust
 		this.service = service;
 	}
 
-	// CRUD functionality mapping
+	// CRUD request mapping
 	@PostMapping("/create")
 	public ResponseEntity<CustomerDTO> createRequest(@Valid @RequestBody Customer body) {
 		return new ResponseEntity<CustomerDTO>(this.service.create(body), HttpStatus.CREATED);
@@ -60,4 +60,14 @@ public class CustomerController implements ControllerInterface<CustomerDTO, Cust
 		return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
 	}
 
+	// Custom queries mapping
+	@GetMapping("/readBy/firstName/{firstName}")
+	public ResponseEntity<List<CustomerDTO>> readAllByFirstNameRequest(@PathVariable String firstName) {
+		return new ResponseEntity<List<CustomerDTO>>(this.service.readAllByFirstName(firstName), HttpStatus.OK);
+	}
+
+	@GetMapping("/readBy/lastName/{lastName}")
+	public ResponseEntity<List<CustomerDTO>> readAllByLastNameRequest(@PathVariable String lastName) {
+		return new ResponseEntity<List<CustomerDTO>>(this.service.readAllByLastName(lastName), HttpStatus.OK);
+	}
 }
