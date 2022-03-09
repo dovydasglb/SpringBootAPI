@@ -21,21 +21,18 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	
 	@Column(name = "first_name")
 	@NotBlank(message = "First name must not be blank")
 	@Size(min = 2, message = "First name must be at least 2 characters long")
 	@Size(max = 30, message = "First name length exceeds limits")
 	private String firstName;
 
-	
 	@Column(name = "last_name")
 	@NotBlank(message = "Last name must not be blank")
 	@Size(min = 2, message = "First name must be at least 2 characters long")
 	@Size(max = 30, message = "First name length exceeds limits")
 	private String lastName;
 
-	
 	@Column(name = "email_address")
 	@NotBlank(message = "Email address must not be blank")
 	@Size(min = 6, message = "Email address must be at least 6 characters long")

@@ -79,7 +79,7 @@ public class CustomerService implements ServiceInterface<CustomerDTO, Customer> 
 		}
 		return this.repo.readAllByFirstName(firstName).stream().map(this::mapToDTO).collect(Collectors.toList());
 	}
-	
+
 	public List<CustomerDTO> readAllByLastName(String lastName) {
 		List<Customer> existingRecordList = this.repo.readAllByLastName(lastName);
 		if (existingRecordList.isEmpty()) {

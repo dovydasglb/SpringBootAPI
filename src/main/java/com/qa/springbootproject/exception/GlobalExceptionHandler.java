@@ -30,7 +30,8 @@ public class GlobalExceptionHandler {
 	// Handle validation exceptions
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<?> validationExceptionHandling(MethodArgumentNotValidException exception) {
-		ErrorDetails errorDetails = new ErrorDetails(new Date(), "Invalid request", exception.getBindingResult().getFieldError().getDefaultMessage());
+		ErrorDetails errorDetails = new ErrorDetails(new Date(), "Invalid request",
+				exception.getBindingResult().getFieldError().getDefaultMessage());
 		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
 	}
 }
