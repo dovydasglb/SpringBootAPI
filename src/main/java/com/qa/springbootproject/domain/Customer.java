@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -25,7 +26,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Table(name = "customer")
+@Table(name = "customers")
 public class Customer {
 
 	@Id
@@ -33,18 +34,21 @@ public class Customer {
 	private long id;
 
 	@Column(name = "first_name")
+	@NotNull
 	@NotBlank(message = "First name must not be blank")
 	@Size(min = 2, message = "First name must be at least 2 characters long")
 	@Size(max = 30, message = "First name length exceeds limits")
 	private String firstName;
 
 	@Column(name = "last_name")
+	@NotNull
 	@NotBlank(message = "Last name must not be blank")
 	@Size(min = 2, message = "First name must be at least 2 characters long")
 	@Size(max = 30, message = "First name length exceeds limits")
 	private String lastName;
 
 	@Column(name = "email_address")
+	@NotNull
 	@NotBlank(message = "Email address must not be blank")
 	@Size(min = 6, message = "Email address must be at least 6 characters long")
 	@Size(max = 254, message = "Email length exceeds limits")
@@ -52,6 +56,7 @@ public class Customer {
 	private String emailAddress;
 
 	@Column(name = "post_code")
+	@NotNull
 	@NotBlank(message = "Post code must not be blank")
 	@Size(min = 6, message = "Invalid postcode")
 	@Size(max = 8, message = "Invalid postcode")
