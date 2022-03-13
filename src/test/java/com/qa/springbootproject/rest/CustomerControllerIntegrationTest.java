@@ -3,7 +3,6 @@ package com.qa.springbootproject.rest;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,26 +35,19 @@ public class CustomerControllerIntegrationTest {
 	private MockMvc mock;
 
 	@Autowired
-	private ModelMapper mapper;
-
-	private CustomerDTO mapToDTO(Customer customer) {
-		return this.mapper.map(customer, CustomerDTO.class);
-	}
-
-	@Autowired
 	private ObjectMapper jsonifier;
 
 	@Test
 	void createRequestTest() throws Exception {
 		// Given - precondition or setup resources
-		Customer customer = new Customer(6L, "Isaac", "Newton", "newton@yahoo.com", "BH3 1SW");
-		CustomerDTO customerDTO = this.mapToDTO(customer);
+		Customer customer = new Customer("Isaac", "Newton", "newton@yahoo.com", "BH3 1SW");
+		CustomerDTO customerDTO = new CustomerDTO(6L, "Isaac", "Newton", "newton@yahoo.com", "BH3 1SW");
 
 		// When - action or behaviour that we are testing
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.POST,
 				defaultURL + "/create");
 		mockRequest.contentType(MediaType.APPLICATION_JSON);
-		mockRequest.content(this.jsonifier.writeValueAsString(customerDTO));
+		mockRequest.content(this.jsonifier.writeValueAsString(customer));
 		mockRequest.accept(MediaType.APPLICATION_JSON);
 
 		// Then - verify the output
@@ -105,13 +97,14 @@ public class CustomerControllerIntegrationTest {
 	@Test
 	void updateByIdRequestTest() throws Exception {
 		// Given - precondition or setup resources
+		Customer customer = new Customer("Marie", "Curie", "mcurie@gmail.com", "SW1 1AA");
 		CustomerDTO customerDTO = new CustomerDTO(1L, "Marie", "Curie", "mcurie@gmail.com", "SW1 1AA");
 
 		// When - action or behaviour that we are testing
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.PUT,
 				defaultURL + "/update/1");
 		mockRequest.contentType(MediaType.APPLICATION_JSON);
-		mockRequest.content(this.jsonifier.writeValueAsString(customerDTO));
+		mockRequest.content(this.jsonifier.writeValueAsString(customer));
 		mockRequest.accept(MediaType.APPLICATION_JSON);
 
 		// Then - verify the output
