@@ -12,9 +12,9 @@ import com.qa.springbootproject.domain.Customer;
 public interface CustomerRepo extends JpaRepository<Customer, Long> {
 
 	// Custom queries
-	@Query(value = "SELECT * from customer WHERE first_name = ?1", nativeQuery = true)
+	@Query(value = "SELECT * from customers WHERE first_name = ?1", nativeQuery = true)
 	List<Customer> readAllByFirstName(String firstName);
 
-	@Query(value = "SELECT * from customer WHERE last_name = ?1", nativeQuery = true)
+	@Query(value = "SELECT * from customers WHERE last_name = ?1", nativeQuery = true)
 	List<Customer> readAllByLastName(String lastName);
 }
