@@ -62,12 +62,13 @@ public class CustomerService implements ServiceInterface<CustomerDTO, Customer> 
 		return this.mapToDTO(updatedRecord);
 	}
 
-	public void deleteById(Long id) {
-		this.repo.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Customer with id: " + id + " not found"));
+	public boolean deleteById(Long id) {
 		Optional<Customer> existingRecord = this.repo.findById(id);
 		if (existingRecord.isPresent()) {
 			this.repo.deleteById(id);
+			return true;
+		} else {
+			throw new ResourceNotFoundException("Customer with id: " + id + " not found");
 		}
 	}
 
