@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import com.qa.springbootproject.controller.CustomerController;
 import com.qa.springbootproject.domain.Customer;
 import com.qa.springbootproject.dto.CustomerDTO;

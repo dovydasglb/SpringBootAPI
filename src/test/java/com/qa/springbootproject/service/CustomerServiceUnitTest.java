@@ -3,6 +3,9 @@ package com.qa.springbootproject.service;
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -13,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import com.qa.springbootproject.domain.Customer;
 import com.qa.springbootproject.dto.CustomerDTO;
+import com.qa.springbootproject.exception.ResourceNotFoundException;
 import com.qa.springbootproject.repo.CustomerRepo;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -164,4 +168,42 @@ public class CustomerServiceUnitTest {
 		// Then - verify the output
 		Assertions.assertThat(response).isEqualTo(customerDTOList);
 	}
+
+	@Test
+	void readByIdResourceNotFoundExceptionTest() {
+		ResourceNotFoundException thrown = assertThrows(ResourceNotFoundException.class,
+				() -> this.service.readById(1L), "Assertion failed");
+		assertEquals(thrown.getMessage(), "Customer with id: 1 not found");
+	}
+
+	@Test
+	void updateByIdResourceNotFoundExceptionTest() {
+		Customer customer = new Customer("Albert", "Einstein", "einstein@gmail.com", "EC1 2AA");
+		ResourceNotFoundException thrown = assertThrows(ResourceNotFoundException.class,
+				() -> this.service.updateById(1L, customer), "Assertion failed");
+		assertEquals(thrown.getMessage(), "Customer with id: 1 not found");
+	}
+
+	@Test
+	void deleteByIdResourceNotFoundExceptionTest() {
+		ResourceNotFoundException thrown = assertThrows(ResourceNotFoundException.class,
+				() -> this.service.deleteById(1L), "Assertion failed");
+		assertEquals(thrown.getMessage(), "Customer with id: 1 not found");
+	}
+
+	@Test
+	void readAllByFirstNameResourceNotFoundExceptionTest() {
+		ResourceNotFoundException thrown = assertThrows(ResourceNotFoundException.class,
+				() -> this.service.readAllByFirstName("Albert"), "Assertion failed");
+		assertEquals(thrown.getMessage(), "Customer record with first name: Albert does not exist");
+	}
+
+	@Test
+	void readAllByLastNameResourceNotFoundExceptionTest() {
+		ResourceNotFoundException thrown = assertThrows(ResourceNotFoundException.class,
+				() -> this.service.readAllByLastName("Dickinson"), "Assertion failed");
+		assertEquals(thrown.getMessage(), "Customer record with last name: Dickinson does not exist");
+	}
+	
+	
 }
