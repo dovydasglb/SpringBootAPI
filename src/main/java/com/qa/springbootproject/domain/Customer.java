@@ -43,8 +43,8 @@ public class Customer {
 	@Column(name = "last_name")
 	@NotNull
 	@NotBlank(message = "Last name must not be blank")
-	@Size(min = 2, message = "First name must be at least 2 characters long")
-	@Size(max = 30, message = "First name length exceeds limits")
+	@Size(min = 2, message = "Last name must be at least 2 characters long")
+	@Size(max = 30, message = "Last name length exceeds limits")
 	private String lastName;
 
 	@Column(name = "email_address")

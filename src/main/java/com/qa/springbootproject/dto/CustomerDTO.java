@@ -1,5 +1,18 @@
 package com.qa.springbootproject.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@EqualsAndHashCode
 public class CustomerDTO {
 
 	private long id;
@@ -7,64 +20,4 @@ public class CustomerDTO {
 	private String lastName;
 	private String emailAddress;
 	private String postCode;
-
-	public CustomerDTO() {
-		super();
-	}
-
-	public CustomerDTO(long id, String firstName, String lastName, String emailAddress, String postCode) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.emailAddress = emailAddress;
-		this.postCode = postCode;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmailAddress() {
-		return emailAddress;
-	}
-
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
-	}
-
-	public String getPostCode() {
-		return postCode;
-	}
-
-	public void setPostCode(String postCode) {
-		this.postCode = postCode;
-	}
-
-	@Override
-	public String toString() {
-		return "CustomerDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", emailAddress="
-				+ emailAddress + ", postCode=" + postCode + "]";
-	}
-
 }
