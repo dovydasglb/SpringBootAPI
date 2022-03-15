@@ -3,7 +3,6 @@ package com.qa.springbootproject.service;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.assertj.core.api.Assertions;
@@ -200,7 +199,7 @@ public class CustomerServiceUnitTest {
 	void readByIdResourceNotFoundExceptionTest() {
 		ResourceNotFoundException thrown = assertThrows(ResourceNotFoundException.class,
 				() -> this.service.readById(1L), "Assertion failed");
-		assertEquals(thrown.getMessage(), "Customer with id: 1 not found");
+		Assertions.assertThat(thrown.getMessage()).isEqualTo("Customer with id: 1 not found");
 	}
 
 	@Test
@@ -208,28 +207,28 @@ public class CustomerServiceUnitTest {
 		Customer customer = new Customer("Albert", "Einstein", "einstein@gmail.com", "EC1 2AA");
 		ResourceNotFoundException thrown = assertThrows(ResourceNotFoundException.class,
 				() -> this.service.updateById(1L, customer), "Assertion failed");
-		assertEquals(thrown.getMessage(), "Customer with id: 1 not found");
+		Assertions.assertThat(thrown.getMessage()).isEqualTo("Customer with id: 1 not found");
 	}
 
 	@Test
 	void deleteByIdResourceNotFoundExceptionTest() {
 		ResourceNotFoundException thrown = assertThrows(ResourceNotFoundException.class,
 				() -> this.service.deleteById(1L), "Assertion failed");
-		assertEquals(thrown.getMessage(), "Customer with id: 1 not found");
+		Assertions.assertThat(thrown.getMessage()).isEqualTo("Customer with id: 1 not found");
 	}
 
 	@Test
 	void readAllByFirstNameResourceNotFoundExceptionTest() {
 		ResourceNotFoundException thrown = assertThrows(ResourceNotFoundException.class,
 				() -> this.service.readAllByFirstName("Albert"), "Assertion failed");
-		assertEquals(thrown.getMessage(), "Customer record with first name: Albert does not exist");
+		Assertions.assertThat(thrown.getMessage()).isEqualTo("Customer record with first name: Albert does not exist");
 	}
 
 	@Test
 	void readAllByLastNameResourceNotFoundExceptionTest() {
 		ResourceNotFoundException thrown = assertThrows(ResourceNotFoundException.class,
 				() -> this.service.readAllByLastName("Dickinson"), "Assertion failed");
-		assertEquals(thrown.getMessage(), "Customer record with last name: Dickinson does not exist");
+		Assertions.assertThat(thrown.getMessage())
+				.isEqualTo("Customer record with last name: Dickinson does not exist");
 	}
-
 }
