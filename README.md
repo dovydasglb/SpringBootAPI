@@ -13,7 +13,8 @@ You can run this application either by cloning this repository and executing the
 By default, the application will run in test mode which connects to the H2 database. You can change this by modifying application properties file (explained in database setup section).
 
 <details>
-<summary>**Run the application as a .jar file**</summary>
+<summary><b>Run the application as a .jar file</b></summary>
+
 **1. Download a .zip of the project files**
 
 Download the zip archive of the project files.
@@ -22,7 +23,7 @@ Download the zip archive of the project files.
 
 Open SpringBootProject-0.0.1-SNAPSHOT.jar file from the root directory. Open cmd or bash terminal and run jps command to see if the application is running:
 
-```bash
+```
 jps
 ```
 
@@ -30,25 +31,102 @@ jps
 
 To exit the application, run jps command in terminal again:
 
-```bash
+```
 jps
 ```
 
-Check the running application's ID and run taskkill command with the <ID>:
+Check the running application's ID and run taskkill command with the ID:
 
-```bash
-taskkill -f /PID <Your application's ID here>
+```
+taskkill -f /PID <Your application ID here>
 ```
 
-This will terminate the application
+This will terminate the application.
 </details>
 
+<details>
+<summary><b>Run the application from your IDE</b></summary>
 
 **1. Clone the application**
 
-Clone the application or download a .zip
+Clone the application:
 
-```bash
+```
 git clone https://github.com/dovydasglb/SpringBootAPI.git
 ```
-**2. **
+**2. Run the application**
+
+Open a bash terminal in project folder and run:
+
+```
+mvn spring-boot:run
+```
+
+By default this will run the application on <http://localhost:8080>.
+</details>
+
+## Making REST API requests
+
+This application allows basic CRUD queries to persist customer data into the database and also queries to find customer details by name. You can create JSON requests using tools such as Postman or Swagger.
+
+Swagger's interface detailing the API's REST requests can be accessed through <http://localhost:8080/api>.
+
+![](https://i.postimg.cc/855DPd2n/Opera-Snapshot-2022-03-15-162952-localhost.png)
+
+## Sample JSON requests
+
+This application uses field validation and will return custom error messages if incorrect JSON body is passed on.
+
+Field validations include:
+
++ All fields are required
++ First name and last name length between 2 and 30 characters
++ Valid UK post code structure and length
++ Valid email address structure
+
+### Some valid JSON bodies for API exploration:
+
+```
+{
+"firstName":"Albert",
+"lastName":"Einstein",
+"emailAddress":"einstein@gmail.com",
+"postCode":"EC1 2AA"
+}
+```
+
+```
+{
+"firstName":"Charles",
+"lastName":"Darwin",
+"emailAddress":"darwin@mail.com",
+"postCode":"SW2 5JZ"
+}
+```
+
+```
+{
+"firstName":"Nicola",
+"lastName":"Tesla",
+"emailAddress":"tesla@tesla.com",
+"postCode":"NW2 5AS"
+}
+```
+
+```
+{
+"firstName":"Charles",
+"lastName":"Dickens",
+"emailAddress":"dickens@gmail.com",
+"postCode":"RH2 2EE"
+}
+```
+
+```
+{
+"firstName":"Alfred",
+"lastName":"Dickens",
+"emailAddress":"adickens@mail.com",
+"postCode":"SW1 4AD"
+}
+```
