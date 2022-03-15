@@ -50,8 +50,6 @@ public class Customer {
 	@Column(name = "email_address")
 	@NotNull(message = "Email address must not be blank")
 	@NotBlank(message = "Email address must not be blank")
-	@Size(min = 6, message = "Email address must be at least 6 characters long")
-	@Size(max = 254, message = "Email length exceeds limits")
 	@Email(message = "Invalid email address")
 	private String emailAddress;
 
