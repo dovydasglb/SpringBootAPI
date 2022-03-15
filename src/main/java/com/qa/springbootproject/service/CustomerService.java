@@ -20,7 +20,6 @@ public class CustomerService implements ServiceInterface<CustomerDTO, Customer> 
 
 	private ModelMapper mapper;
 
-	// Model mapping and repository dependency injection
 	@Autowired
 	public CustomerService(CustomerRepo repo, ModelMapper mapper) {
 		super();

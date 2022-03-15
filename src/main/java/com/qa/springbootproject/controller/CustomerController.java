@@ -26,14 +26,12 @@ public class CustomerController implements ControllerInterface<CustomerDTO, Cust
 
 	private CustomerService service;
 
-	// Service layer dependency injection
 	@Autowired
 	public CustomerController(CustomerService service) {
 		super();
 		this.service = service;
 	}
 
-	// CRUD request mapping
 	@PostMapping("/create")
 	public ResponseEntity<CustomerDTO> createRequest(@Valid @RequestBody Customer body) {
 		return new ResponseEntity<CustomerDTO>(this.service.create(body), HttpStatus.CREATED);
@@ -60,7 +58,6 @@ public class CustomerController implements ControllerInterface<CustomerDTO, Cust
 		return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
 	}
 
-	// Custom queries mapping
 	@GetMapping("/readBy/firstName/{firstName}")
 	public ResponseEntity<List<CustomerDTO>> readAllByFirstNameRequest(@PathVariable String firstName) {
 		return new ResponseEntity<List<CustomerDTO>>(this.service.readAllByFirstName(firstName), HttpStatus.OK);
