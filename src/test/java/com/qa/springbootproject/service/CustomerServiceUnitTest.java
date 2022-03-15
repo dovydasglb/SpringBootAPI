@@ -46,6 +46,9 @@ public class CustomerServiceUnitTest {
 
 		// Then - verify the output
 		Assertions.assertThat(response).isEqualTo(customerDTO);
+
+		Mockito.verify(this.repo, Mockito.times(1)).save(customer);
+		Mockito.verify(this.mapper, Mockito.times(1)).map(createdCustomer, CustomerDTO.class);
 	}
 
 	@Test
@@ -77,6 +80,13 @@ public class CustomerServiceUnitTest {
 
 		// Then - verify the output
 		Assertions.assertThat(response).isEqualTo(customerDTOList);
+
+		Mockito.verify(this.repo, Mockito.times(1)).findAll();
+		Mockito.verify(this.mapper, Mockito.times(1)).map(customer1, CustomerDTO.class);
+		Mockito.verify(this.mapper, Mockito.times(1)).map(customer2, CustomerDTO.class);
+		Mockito.verify(this.mapper, Mockito.times(1)).map(customer3, CustomerDTO.class);
+		Mockito.verify(this.mapper, Mockito.times(1)).map(customer4, CustomerDTO.class);
+		Mockito.verify(this.mapper, Mockito.times(1)).map(customer5, CustomerDTO.class);
 	}
 
 	@Test
@@ -93,6 +103,9 @@ public class CustomerServiceUnitTest {
 
 		// Then - verify the output
 		Assertions.assertThat(response).isEqualTo(customerDTO);
+
+		Mockito.verify(this.repo, Mockito.times(1)).findById(1L);
+		Mockito.verify(this.mapper, Mockito.times(1)).map(customer, CustomerDTO.class);
 	}
 
 	@Test
@@ -111,6 +124,10 @@ public class CustomerServiceUnitTest {
 
 		// Then - verify the output
 		Assertions.assertThat(response).isEqualTo(updatedCustomerDTO);
+
+		Mockito.verify(this.repo, Mockito.times(2)).findById(1L);
+		Mockito.verify(this.repo, Mockito.times(1)).save(updatedCustomer);
+		Mockito.verify(this.mapper, Mockito.times(1)).map(updatedCustomer, CustomerDTO.class);
 	}
 
 	@Test
@@ -125,6 +142,8 @@ public class CustomerServiceUnitTest {
 
 		// Then - verify the output
 		Assertions.assertThat(response).isEqualTo(true);
+
+		Mockito.verify(this.repo, Mockito.times(1)).findById(1L);
 	}
 
 	@Test
@@ -146,6 +165,10 @@ public class CustomerServiceUnitTest {
 
 		// Then - verify the output
 		Assertions.assertThat(response).isEqualTo(customerDTOList);
+
+		Mockito.verify(this.repo, Mockito.times(2)).readAllByFirstName("Charles");
+		Mockito.verify(this.mapper, Mockito.times(1)).map(customer2, CustomerDTO.class);
+		Mockito.verify(this.mapper, Mockito.times(1)).map(customer4, CustomerDTO.class);
 	}
 
 	@Test
@@ -167,6 +190,10 @@ public class CustomerServiceUnitTest {
 
 		// Then - verify the output
 		Assertions.assertThat(response).isEqualTo(customerDTOList);
+
+		Mockito.verify(this.repo, Mockito.times(2)).readAllByLastName("Dickens");
+		Mockito.verify(this.mapper, Mockito.times(1)).map(customer4, CustomerDTO.class);
+		Mockito.verify(this.mapper, Mockito.times(1)).map(customer5, CustomerDTO.class);
 	}
 
 	@Test
@@ -204,6 +231,5 @@ public class CustomerServiceUnitTest {
 				() -> this.service.readAllByLastName("Dickinson"), "Assertion failed");
 		assertEquals(thrown.getMessage(), "Customer record with last name: Dickinson does not exist");
 	}
-	
-	
+
 }

@@ -38,6 +38,8 @@ public class CustomerControllerUnitTest {
 
 		// Then - verify the output
 		Assertions.assertThat(response).isEqualTo(new ResponseEntity<CustomerDTO>(customerDTO, HttpStatus.CREATED));
+
+		Mockito.verify(this.service, Mockito.times(1)).create(customer);
 	}
 
 	@Test
@@ -58,6 +60,8 @@ public class CustomerControllerUnitTest {
 		// Then - verify the output
 		Assertions.assertThat(response)
 				.isEqualTo(new ResponseEntity<List<CustomerDTO>>(customerDTOList, HttpStatus.OK));
+
+		Mockito.verify(this.service, Mockito.times(1)).readAll();
 	}
 
 	@Test
@@ -72,6 +76,8 @@ public class CustomerControllerUnitTest {
 
 		// Then - verify the output
 		Assertions.assertThat(response).isEqualTo(new ResponseEntity<CustomerDTO>(customerDTO, HttpStatus.OK));
+
+		Mockito.verify(this.service, Mockito.times(1)).readById(1L);
 	}
 
 	@Test
@@ -87,6 +93,8 @@ public class CustomerControllerUnitTest {
 
 		// Then - verify the output
 		Assertions.assertThat(response).isEqualTo(new ResponseEntity<CustomerDTO>(customerDTO, HttpStatus.ACCEPTED));
+
+		Mockito.verify(this.service, Mockito.times(1)).updateById(1L, customer);
 	}
 
 	@Test
@@ -99,6 +107,8 @@ public class CustomerControllerUnitTest {
 
 		// Then - verify the output
 		Assertions.assertThat(response).isEqualTo(new ResponseEntity<>(HttpStatus.NO_CONTENT));
+
+		Mockito.verify(this.service, Mockito.times(1)).deleteById(1L);
 	}
 
 	@Test
@@ -116,6 +126,8 @@ public class CustomerControllerUnitTest {
 		// Then - verify the output
 		Assertions.assertThat(response)
 				.isEqualTo(new ResponseEntity<List<CustomerDTO>>(customerDTOList, HttpStatus.OK));
+
+		Mockito.verify(this.service, Mockito.times(1)).readAllByFirstName("Charles");
 	}
 
 	@Test
@@ -133,5 +145,7 @@ public class CustomerControllerUnitTest {
 		// Then - verify the output
 		Assertions.assertThat(response)
 				.isEqualTo(new ResponseEntity<List<CustomerDTO>>(customerDTOList, HttpStatus.OK));
+
+		Mockito.verify(this.service, Mockito.times(1)).readAllByLastName("Dickens");
 	}
 }
