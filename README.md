@@ -18,6 +18,8 @@ You can run this application either by cloning this repository and executing the
 
 By default, the application will run in test mode which connects to the H2 database. You can change this by modifying application properties file (explained in database setup section).
 
+Important! If you want to use MySQL database, make sure to terminate any previous connections first, create a new `springbootproject` database and only then run application with `dev` profile (detailed in MySQL database setup section).
+
 <details>
 <summary><b>Run the application as a .jar file</b></summary>
 
@@ -186,7 +188,7 @@ create database springbootproject;
 use springbootproject;
 ```
 
-You can now use your REST API requests to persist data into your MySQL database.
+You can now start your application and use your REST API requests to persist data into your MySQL database.
 
 ## Testing
 
