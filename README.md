@@ -21,18 +21,13 @@ By default, the application will run in test mode which connects to the H2 datab
 <details>
 <summary><b>Run the application as a .jar file</b></summary>
 
-
-**1. Download a the .zip archive of the project files**
-
-**2. Run the application**
+Download the .zip archive of the project files
 
 Open SpringBootProject-0.0.1-SNAPSHOT.jar file from the root directory. Open cmd or bash terminal and run jps command to see if the application is running:
 
 ```
 jps
 ```
-
-**3. Exit the application**
 
 To exit the application, run jps command in terminal again:
 
@@ -52,14 +47,11 @@ This will terminate the application.
 <details>
 <summary><b>Run the application from your IDE</b></summary>
 
-**1. Clone the application**
-
 Clone the application:
 
 ```
 git clone https://github.com/dovydasglb/SpringBootAPI.git
 ```
-**2. Run the application**
 
 Open a bash terminal in project folder and run:
 
@@ -68,11 +60,12 @@ mvn spring-boot:run
 ```
 
 By default this will run the application on <http://localhost:8080>.
+
 </details>
 
 ## Making REST API requests
 
-This application allows basic CRUD queries to persist customer data into the database and also queries to find customer details by name. You can create JSON requests using tools such as Postman or Swagger.
+This application allows basic CRUD queries to persist customer data into the database and also queries to find customer details by id, first name and last name. You can create JSON requests using tools such as Postman or Swagger.
 
 Swagger's interface detailing the API's REST requests can be accessed through <http://localhost:8080/api>.
 
@@ -92,6 +85,10 @@ Field validations include:
 + Valid email address structure
 
 All fields are of string data type.
+
+<p align="center">
+<img src=https://i.postimg.cc/W4HhqQKM/Postman.jpg>
+</p>
 
 ### Some valid JSON bodies for API exploration:
 
@@ -148,15 +145,18 @@ By default, this application uses create-drop schema settings. This will use Hib
 
 H2 database can be accessed through the H2 console at <http://localhost:8080/h2-console>
 
-Use the default login details using `sa` as user name and blank password and default JDBC URL `jdbc:h2:mem:testdb` and click Connect.
+Use the default login details using `sa` as user name and blank password. Use default JDBC URL `jdbc:h2:mem:testdb` and click Connect.
 
 <p align="center">
 <img src=https://i.postimg.cc/0j8DW5HS/Opera-Snapshot-2022-03-16-105252-localhost.png>
 </p>
 
-If encountering any issues, check Spring Boot console for any information. If the launch was successful, you should see a message similar to: `H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'`.
+If encountering any issues, check Spring Boot console for any information. If the launch was successful, you should see a message in your console similar to: `H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'`.
 
-You can run SQL queries within the H2 console to retrieve and display the data, such as `SELECT * FROM CUSTOMERS`
+You can run SQL queries within the H2 console to retrieve and display the data, such as:
+ ```
+ SELECT * FROM CUSTOMERS
+ ```
 
 <p align="center">
 <img src=https://i.postimg.cc/Ss4MRN4P/Opera-Snapshot-2022-03-16-105221-localhost.png>
@@ -166,28 +166,52 @@ You can run SQL queries within the H2 console to retrieve and display the data, 
 
 Alternatively, you can connect the application to MySQL database.
 
-**1. Change active profile**
-
 Go to `src/main/resources/application.properties` and change the active profile to `spring.profiles.active=test`.
 
-**2. Log into MySQL**
-
-Go to `src/main/resources/application-dev.properties` and change `spring.datasource.username=root` and `spring.datasource.password=root` to access your MySQL server.
+Then go to `src/main/resources/application-dev.properties` and change `spring.datasource.username=root` and `spring.datasource.password=root` to access your MySQL server.
 
 Open cmd or bash terminal and run mysql command to login. Change `root` to your username if different:
 
-```mysql -u root -p```
+```
+mysql -u root -p
+```
 
-**3. Crate active database**
+To create active database run the following in your terminal:
 
-Run the following in your terminal:
+```
+create database springbootproject;
+```
 
-```create database springbootproject;```
+```
+use springbootproject;
+```
 
-```use springbootproject;```
-
-You can now use your API requests to persist data into your MySQL database.
+You can now use your REST API requests to persist data into your MySQL database.
 
 ## Testing
 
-Main test coverage 83%.
+The application uses unit and integration tests to ensure code base integrity. Main test coverage 82.9%.
+
+<p align="center">
+<img src=https://i.postimg.cc/d3HTtbJZ/Tests.jpg>
+</p>
+
+## Project management and documentation
+
+This application was built adhering to the Agile software development methodology. Jira board was used to plan and organise project activities. The project was completed in a 10-day Sprint for my software development academy final project.
+
+<p align="center">
+<img src=https://i.postimg.cc/VsFKygbj/Opera-Snapshot-2022-03-16-120621-dovydasgulbinas-atlassian-net.png>
+</p>
+
+<p align="center">
+<img src=https://i.postimg.cc/d1YjpZsH/Opera-Snapshot-2022-03-16-120648-dovydasgulbinas-atlassian-net.png>
+</p>
+
+<p align="center">
+<img src=https://i.postimg.cc/wMYQKy94/Riskassessment.jpg>
+</p>
+
+<p align="center">
+<img src=https://i.postimg.cc/x8s8vhpG/Riskmatrix.jpg>
+</p>
