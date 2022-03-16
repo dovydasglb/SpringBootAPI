@@ -170,7 +170,7 @@ Go to `src/main/resources/application.properties` and change the active profile 
 
 Then go to `src/main/resources/application-dev.properties` and change `spring.datasource.username=root` and `spring.datasource.password=root` to access your MySQL server.
 
-Open cmd or bash terminal and run mysql command to login. Change `root` to your username if different:
+Open cmd or bash terminal and run mysq command to login. Change `root` to your username if different:
 
 ```
 mysql -u root -p
@@ -209,9 +209,9 @@ This application was built adhering to the Agile software development methodolog
 </p>
 
 <p align="center">
-<img src=https://i.postimg.cc/wMYQKy94/Riskassessment.jpg>
+<img src=https://i.postimg.cc/fysbXX7N/Riskassessment.jpg>
 </p>
 
 <p align="center">
-<img src=https://i.postimg.cc/x8s8vhpG/Riskmatrix.jpg>
+<img src=https://i.postimg.cc/XNxWxT4F/Riskmatrix.jpg>
 </p>
