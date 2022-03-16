@@ -215,3 +215,21 @@ This application was built adhering to the Agile software development methodolog
 <p align="center">
 <img src=https://i.postimg.cc/XNxWxT4F/Riskmatrix.jpg>
 </p>
+
+## Additional information
+
++ Why are we doing this?
+
+This project was part of the curriculum during my coding academy at QA. The intention of this project was to showcase the use of Spring Boot tools, Agile development methodology and create a functioning REST API using multi-tiered architecture.
+
++ How did I expect the challenge to go?
+
+I expected the project to be challenging and I anticipated that I might need to scale down the project scope to be able to deliver a well functioning application. Initially, I wanted to build a complete e-commerce API which would allow the client to create orders and store customer and product information in the database. However, due to time constraints I decided to initially create a minimum viable application which would only store customer information.
+
++ What went well? / What didn't go as planned?
+
+The initial build of the application was fairly quick, but as soon as I started testing the application, I realised that I might run out of time if I did not limit the scope of the project. Hence I made the decision to stick with a simple single table API.
+
++ Possible improvements for future revisions of the project
+
+In the future, I would like to expand on this project and create a complete e-commerce API which would use security tools for user authentication and user roles to create and complete online orders.
