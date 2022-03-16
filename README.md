@@ -166,7 +166,7 @@ You can run SQL queries within the H2 console to retrieve and display the data, 
 
 Alternatively, you can connect the application to MySQL database.
 
-Go to `src/main/resources/application.properties` and change the active profile to `spring.profiles.active=test`.
+Go to `src/main/resources/application.properties` and change the active profile to `spring.profiles.active=dev`.
 
 Then go to `src/main/resources/application-dev.properties` and change `spring.datasource.username=root` and `spring.datasource.password=root` to access your MySQL server.
 
@@ -190,7 +190,7 @@ You can now use your REST API requests to persist data into your MySQL database.
 
 ## Testing
 
-The application uses unit and integration tests to ensure code base integrity. Main test coverage 82.9%.
+The application uses unit and integration tests to ensure code base integrity. Main test coverage is 82.9%.
 
 <p align="center">
 <img src=https://i.postimg.cc/d3HTtbJZ/Tests.jpg>
