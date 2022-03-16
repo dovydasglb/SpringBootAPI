@@ -9,7 +9,7 @@ The application allows for interaction with the database using web requests in J
 The API uses multi-tier architecture and uses data transfer objects to decouple service layer from the database layer.
 
 <p align="center">
-<img src=https://i.postimg.cc/g2QZ8HV1/ERD-and-flow-drawio.png>
+<img src=https://i.postimg.cc/sg5GBjC7/ERDandflowchart.jpg>
 </p>
 
 ## Application Setup
