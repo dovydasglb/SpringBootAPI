@@ -164,6 +164,30 @@ You can run SQL queries within the H2 console to retrieve and display the data, 
 
 ### MySQL database setup
 
+Alternatively, you can connect the application to MySQL database.
+
+**1. Change active profile**
+
+Go to `src/main/resources/application.properties` and change the active profile to `spring.profiles.active=test`.
+
+**2. Log into MySQL**
+
+Go to `src/main/resources/application-dev.properties` and change `spring.datasource.username=root` and `spring.datasource.password=root` to access your MySQL server.
+
+Open cmd or bash terminal and run mysql command to login. Change `root` to your username if different:
+
+```mysql -u root -p```
+
+**3. Crate active database**
+
+Run the following in your terminal:
+
+```create database springbootproject;```
+
+```use springbootproject;```
+
+You can now use your API requests to persist data into your MySQL database.
+
 ## Testing
 
 Main test coverage 83%.
